@@ -47,18 +47,15 @@ const comp1 ={
 		.then(response => {
 		  this.categories = response.data.categories;
 		  this.categoriesCount = Object.keys(response.data.categories).length;
-		//   console.log(response.data.categories);
 		})
 		.catch(error => {
-		//   console.log(error);
+		  console.log(error);
 		});
 	},
 	methods:{
 		catagoryClick(categoryName){
 			selected_category = categoryName;
-			// this.templateString = comp2
 			my_object.cycle(comp2);
-			// alert("catagory clicked = "+categoryName);
 		}
 	}
 }
@@ -70,55 +67,51 @@ var selected_meal_id = "";
 const comp2 ={
 	template:`
 
-	<div class="bg-white">
-	
-		<div class="px-20 pt-10">
-			<nav aria-label="Breadcrumb" class="flex justify-center lg:border-b pb-10 lg:border-gray-200">
-				<ol role="list" class="max-w-2xl mx-auto px-4 flex items-center space-x-2 sm:px-6 lg:max-w-7xl lg:px-8">
-					<li>
-						<div class="flex items-center">
-							<a href="#" @click='backHome' class="mr-2 text-xl font-medium text-gray-900"> Categories </a>
-							<svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor"
-								xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-4 h-5 text-gray-300">
-								<path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
-							</svg>
-						</div>
-					</li>
-
-					<li class="text-xl">
-						<a aria-current="page" class="font-medium text-gray-500 hover:text-gray-600"> Meals ({{mealsCount}}) </a>
-					</li>
-				</ol>
-			</nav>
-
-			<div class="lg:px-2 sm:px-2 pt-5">
+		<div class="bg-white">
 		
-			<h2 class="sr-only">Products</h2>
-				
-				<div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-6 xl:gap-x-8">
+			<div class="px-20 pt-10">
+				<nav aria-label="Breadcrumb" class="flex justify-center lg:border-b pb-10 lg:border-gray-200">
+					<ol role="list" class="max-w-2xl mx-auto px-4 flex items-center space-x-2 sm:px-6 lg:max-w-7xl lg:px-8">
+						<li>
+							<div class="flex items-center">
+								<a href="#" @click='backHome' class="mr-2 text-xl font-medium text-gray-900"> Categories </a>
+								<svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor"
+									xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-4 h-5 text-gray-300">
+									<path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+								</svg>
+							</div>
+						</li>
 
-					<a href="#" class="relative group shadow-lg pb-14 rounded overflow-hidden" v-for="meal in meals" @click='mealClick(meal.idMeal)'>
-						<div class="w-full aspect-w-1 aspect-h-1 bg-white rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-							<img v-bind:src="meal.strMealThumb" alt="" class="w-64 h-64 object-center object-contain group-hover:opacity-75">
-						</div>
-						<p class="mt-2 mb-2 text-lg text-bold font-medium text-gray-900 flex justify-center">{{meal.strMeal}}</p>
+						<li class="text-xl">
+							<a aria-current="page" class="font-medium text-gray-500 hover:text-gray-600"> Meals ({{mealsCount}}) </a>
+						</li>
+					</ol>
+				</nav>
 
-						<div class="bg-gray-200 w-full absolute bottom-0">
-							<h3 class=" flex justify-center pt-4 pb-3 text-sm text-gray-700">View Meals</h3>
-						</div>
-					</a>
+				<div class="lg:px-2 sm:px-2 pt-5">
+			
+				<h2 class="sr-only">Products</h2>
+					
+					<div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-6 xl:gap-x-8">
 
-				
-				<!-- More products... -->
+						<a href="#" class="relative group shadow-lg pb-14 rounded overflow-hidden" v-for="meal in meals" @click='mealClick(meal.idMeal)'>
+							<div class="w-full aspect-w-1 aspect-h-1 bg-white rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
+								<img v-bind:src="meal.strMealThumb" alt="" class="w-64 h-64 object-center object-contain group-hover:opacity-75">
+							</div>
+							<p class="mt-2 mb-2 text-lg text-bold font-medium text-gray-900 flex justify-center">{{meal.strMeal}}</p>
+
+							<div class="bg-gray-200 w-full absolute bottom-0">
+								<h3 class=" flex justify-center pt-4 pb-3 text-sm text-gray-700">View Meals</h3>
+							</div>
+						</a>
+
+					
+					<!-- More products... -->
+					</div>
 				</div>
+				<br>
 			</div>
-			<br>
 		</div>
-	</div>
-
-
-
-	
 	`,
 	data(){
 		return{
